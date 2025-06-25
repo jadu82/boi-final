@@ -1,0 +1,171 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #edf0f5;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  color: #1e3c72;
+}
+
+.container {
+  margin: 90px auto 40px;
+  max-width: 960px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* SMS Card */
+.sms-card {
+  text-align: left;
+  border-left: 5px solid #1e90ff;
+  background: #ffffff;
+  padding: 18px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease-in-out;
+}
+.sms-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(30, 144, 255, 0.2);
+}
+.sms-card h3 {
+  margin: 0;
+  color: #1e90ff;
+  font-size: 18px;
+}
+.sms-card p {
+  margin: 5px 0;
+  color: #333;
+}
+.sms-card .timestamp {
+  font-size: 12px;
+  color: #777;
+}
+
+.no-sms {
+  color: #666;
+  font-size: 18px;
+  margin-top: 30px;
+  font-weight: 500;
+}
+
+/* Navigation Buttons */
+.button-row {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  padding: 12px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  flex-wrap: wrap;
+}
+
+.back-btn {
+  padding: 10px 18px;
+  font-size: 14px;
+  color: white;
+  background: #0077cc;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #005bb5;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #1e3c72;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #2a5298;
+  text-align: center;
+  width: auto;
+  min-width: 220px;
+  max-width: 280px;
+}
+
+.modal-content h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.modal-content button {
+  background-color: #00aaff;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #0077cc;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .container {
+    padding: 16px;
+    margin-top: 100px;
+  }
+
+  .sms-card {
+    padding: 14px;
+    margin: 14px 0;
+  }
+
+  .button-row {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .back-btn {
+    font-size: 12px;
+    padding: 8px 14px;
+    max-width: 100%;
+  }
+}

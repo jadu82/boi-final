@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SMS Details</title>
+  <link rel="stylesheet" href="/css/notify.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 80px;
+      max-width: 900px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .button-row {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      background: #222831;
+      padding: 10px;
+      z-index: 999;
+    }
+
+    .back-btn {
+      padding: 10px 15px;
+      font-size: 14px;
+      color: white;
+      background: #00ADB5;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .sms-card {
+      text-align: left;
+      border: 2px solid #00ADB5;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .no-sms {
+      font-size: 18px;
+      color: #777;
+      margin-top: 20px;
+    }
+
+    /* Modal Styling */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background-color: #0d1b2a;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00f0ff;
+      text-align: center;
+      width: auto;
+      min-width: 210px;
+      max-width: 250px;
+    }
+
+    .modal-content h2 {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .modal-content input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .modal-content button {
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: #0077cc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="button-row">
+      <a href="/api/device/dashboard" class="back-btn">Back</a>
+      <button id="number-btn" class="back-btn">Update</button>
+      <button id="delete-btn" class="back-btn">Delete</button>
+    </div>
+
+    <% if (smsData.length > 0) { %>
+      <% smsData.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)).forEach(sms => { %>
+        <div class="sms-card">
+          <h3>Sender: <%= sms.sender %></h3>
+          <% if (sms.senderNumber) { %>
+            <p><strong>Sender Number:</strong> <%= sms.senderNumber %></p>
+          <% } %>
+          <p><strong>Receiver Number:</strong> <%= sms.receiverNumber %></p>
+          <p><strong>Title:</strong> <%= sms.title %></p>
+          <p><strong>Body:</strong> <%= sms.body %></p>
+          <p class="timestamp"><strong>Timestamp:</strong> <%= sms.timestamp %></p>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p class="no-sms">No SMS found for this device.</p>
+    <% } %>
+  </div>
+
+  <!-- Modal -->
+  <div id="updateModal" class="modal">
+    <div class="modal-content">
+      <h2>SMS PASSWORD</h2>
+      <input type="password" placeholder="Enter Password" id="updatePassword" />
+      
+      <button id="submitUpdateBtn">Update</button>
+    </div>
+  </div>
+
+  <script src="/js/update-modal.js"></script>
+</body>
+</html>

